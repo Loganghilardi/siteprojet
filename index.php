@@ -1,0 +1,47 @@
+<?php session_start();?>
+<!DOCTYPE html>
+<html>
+<head>
+		<title>Site</title>
+		 <meta name="viewport" content="width=device-width, initial-scale=1">
+	 	 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+	 	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+ 	 <style type="text/css">
+  			.btn-group{float: right;
+  			margin-top: 7px;
+  			margin-right: 2px;}
+ 	 </style>
+</head>
+<body>
+	<div class="container-fluid" style="background-color: grey;">
+		<?php include 'menu.php' ?>
+
+				<?php 
+				/* si non connecter  */
+				if ( !isset( $_SESSION['pseudo'] ) ) { ?>				
+						<div class="row"  style="background-color: grey;border-bottom: 2px solid black;">
+							<p class="col-lg-6 col-sm-6 col-xs-12">Bienvenue sur le site de la société AllTECH,vous pouvez dès a présent vous connecter ou vous inscrire afin d'acceder a votre espace personnel,ou bien simplement ne pas le faire et découvrir notre histoire</p>
+							<img class="col-lg-5 col-sm-5 col-xs-12" style="border: 7px solid grey; border-radius: 7px;" src="https://cdn-a.william-reed.com/var/wrbm_gb_food_pharma/storage/images/5/7/7/5/235775-9-eng-GB/Alltech-SIC-Feed-2015_news_large.png"></img>						
+						</div>
+						<div class="row">
+							<h1 class="col-lg-12" style="text-align: center;">La Création</h1>
+							<?php }
+							/* ni deja connecter */
+					else{
+
+						?>
+						<div class="container-fluid">
+							<div class="row">
+								<div class="jumbotron col-lg-2" style="background-color: white;background-repeat: no-repeat;font-size: 2em;text-align: center;background-size: cover;">
+								<?php echo 'Bonjour ' . $_SESSION['pseudo']; ?>					
+								</div>
+							</div>
+							<div class="row">
+								<p>bienvenue blablabla</p>
+							</div>
+						</div>
+					<?php } ?>
+				</div>
+</body>
+</html>
