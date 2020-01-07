@@ -8,5 +8,5 @@ session_destroy();
 
 setcookie('pseudo', '');
 setcookie('pass_hache', '');	
-header ("Location: http://localhost/site/index.php");
+header ("Location: http://localhost/sitee/index.php");
 /* bah ca coupe la session et les cookies */

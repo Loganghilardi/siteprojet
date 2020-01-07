@@ -1,14 +1,12 @@
-
-
 <form method="post" action="index.php">
-	<p><strong>Pseudo</strong></p>
-	<input type="text" name="pseudo" class="form-control" placeholder="logan_77">
-	<p><strong>Mot de passe</strong></p>
-	<input type="password" name="pass" class="form-control" placeholder="***">
-	<p><strong>Mail</strong></p>
-	<input type="text" name="email" class="form-control" placeholder="adress@email.com">
-	
-  <button type="submit" style="margin: 5px" class="btn btn-primary">S'inscrire</button>
+    <p><strong>Pseudo</strong></p>
+    <input type="text" name="pseudo" class="form-control" placeholder="logan_77">
+    <p><strong>Mot de passe</strong></p>
+    <input type="password" name="pass" class="form-control" placeholder="***">
+    <p><strong>Mail</strong></p>
+    <input type="text" name="email" class="form-control" placeholder="adress@email.com">
+
+    <button type="submit" style="margin: 5px" class="btn btn-primary">S'inscrire</button>
 </form>
 <?php
 
@@ -90,4 +88,3 @@ else{ echo "Tout les champs doivent être rempli! ";}
 
 
 	
-

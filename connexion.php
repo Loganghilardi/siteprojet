@@ -1,9 +1,5 @@
-
-
-
-
 <form method="post" action="index.php">
-  <p><strong>Pseudo</strong></p>
+    <p><strong>Pseudo</strong></p>
     <input type="text" name="pseudo" class="form-control" placeholder="logan_77">
     <p><strong>Mot de passe</strong></p>
     <input type="password" name="pass" class="form-control" placeholder="***">
@@ -50,8 +46,9 @@ else
        
         $_SESSION['id'] = $resultat['id'];
         $_SESSION['pseudo'] = $pseudo;
-        echo 'Vous êtes connecté !';
-        header('Refresh: 0');
+        echo 'Vous êtes connecté !';    
+        header('Refresh: 0'); 
+        
      
         
     }
