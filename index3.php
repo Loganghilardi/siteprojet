@@ -110,7 +110,7 @@ else
                 <div class="col-lg-2 col-md-3 col-sm-7 col-xs-12" style="margin-top: 20vh;">
 
                     <button id="test" type="button" class="btn btn-primary">Valider</button>
-                    <a href="maquette.php"><button type="button" class="btn btn-primary">Annuler</button></a>
+                    <a href="index.php"><button type="button" class="btn btn-primary">Annuler</button></a>
                 </div>
 
 

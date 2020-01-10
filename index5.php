@@ -1,16 +1,37 @@
 <?php session_start(); ?>
 
-<form method="post" action="index5.php">
-    <p><strong>Code</strong></p>
-    <input type="text" name="code" class="form-control" placeholder="logan_77">
-    <p><strong>Libellé</strong></p>
-    <input type="password" name="libelle" class="form-control" placeholder="***">
 
+<!DOCTYPE html>
+<html>
 
-    <button type="submit" style="margin: 5px" class="btn btn-primary">S'inscrire</button>
-</form>
+<head>
+    <title>Site</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <style type="text/css">
+        .btn-group {
+            float: right;
+            margin-top: 7px;
+            margin-right: 2px;
+        }
 
-<?php
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid" style="background-color: grey;">
+
+        <?php include 'menu.php' ;
+    
+     
+if (!isset($_SESSION['pseudo']))
+{
+    echo '<center><font color="red" size="4"><b>Vous devez vous connecter pour acceder à la page </center></font><br />';
+}
+else
+{ 
 try
 {
 	// On se connecte à MySQL
@@ -25,20 +46,32 @@ catch(Exception $e)
 // Si tout va bien, on peut continuer
 
 // On récupère tout le contenu de la table jeux_video
-$reponse = $bdd->query('SELECT * FROM fonction');
+$reponse = $bdd->query('SELECT * FROM fonction'); ?>
+        <table class="table table-hover" style="background-color: white;">
+            <thead>
+                <tr>
+                    <th>Code</th>
+                    <th>Libellé</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
 
 // On affiche chaque entrée une à une
 while ($donnees = $reponse->fetch())
 {
 ?>
-<p>
-    <strong>Jeu</strong> : <?php echo $donnees['Code']; ?><br />
-    Le possesseur de ce jeu est : <?php echo $donnees['Code']; ?>, et il le vend à <?php echo $donnees['Code']; ?> euros !<br />
-    Ce jeu fonctionne sur <?php echo $donnees['Libellé']; ?> et on peut y jouer à <?php echo $donnees['Code']; ?> au maximum<br />
-    <?php echo $donnees['Libellé']; ?> a laissé ces commentaires sur <?php echo $donnees['Libellé']; ?> : <em><?php echo $donnees['Libellé']; ?></em>
-</p>
-<?php
-}
+
+                <tr>
+                    <td><?php echo $donnees['Code']  ; ?></td>
+                    <td> <?php echo $donnees['Libellé']; ?></td>
+                </tr>
+
+                <?php
+} ?>
+            </tbody>
+        </table>
+        <?php
 
 
 
@@ -54,15 +87,53 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 						 header('Refresh: 0');
     
 }
-else{ echo "Tout les champs doivent être rempli! ";}
+
 
 
 
 
 	?>
-<div class="col-lg-3 col-md-4 col-sm-5 col-xs-12" style="margin: 1vh;">
-    <div class="btn-group" role="group" aria-label="Exemple">
-        <button type="button" id="btn" class="btn btn-primary">Ajouter une ligne</button>
-        <button type="button" class="btn btn-primary">Supprimer une ligne</button>
+
+        <div class="col-lg-3 col-md-4 col-sm-5 col-xs-12" style="margin: 1vh;">
+            <div class="btn-group" role="group" aria-label="Exemple">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                    Ajouter
+                </button>
+                <button type="button" class="btn btn-primary">Supprimer une ligne</button>
+            </div>
+        </div>
+        <!-- modale -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Ajout</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="post" action="index5.php">
+                            <p><strong>Code</strong></p>
+                            <input type="text" name="code" class="form-control" placeholder="logan_77">
+                            <p><strong>Libellé</strong></p>
+                            <input type="password" name="libelle" class="form-control" placeholder="***">
+
+
+                            <button type="submit" style="margin: 5px" class="btn btn-primary">Ajouter</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                        </form>
+                    </div>
+
+
+
+
+
+                </div>
+            </div>
+        </div>
     </div>
-</div>
+    <?php } ?>
+</body>
+
+</html>
