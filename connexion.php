@@ -23,7 +23,9 @@ catch (Exception $e)
 <?php 
 
 /* si le formulaire a ete envoyé */
-if($_SERVER['REQUEST_METHOD'] === 'POST') {
+if($_SERVER['REQUEST_METHOD'] === 'POST') 
+{
+    if(!empty($_POST['pseudo'] )){
 $pseudo =$_POST['pseudo'];
     $pass = $_POST[ 'pass' ];
 /* compare le pseudo a la bdd */
@@ -33,8 +35,9 @@ $req->execute(array(
 $resultat = $req->fetch();
 
 /* compare le mdp a celui de la bdd */
-$isPasswordCorrect = password_verify($_POST['pass'], $resultat['pass']);
+$isPasswordCorrect = password_verify($_POST['pass'], $resultat['pass']);}
 /* si le pseudo correspond pas */
+    if(!empty($resultat)){
 if (!$resultat)
 {
     echo 'Mauvais identifiant ou mot de passe !';
@@ -55,6 +58,7 @@ else
     else {
         echo 'Mauvais identifiant ou mot de passe !';
     }
+}
 }
 }
 ?>

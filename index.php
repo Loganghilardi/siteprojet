@@ -1,9 +1,11 @@
-<?php session_start();?>
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html>
 
 <head>
     <title>Relève et détachements</title>
+    <link rel="shortcut icon" type="image/x-icon" href="Capture.PNG">
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -18,27 +20,28 @@
     </style>
 </head>
 
-<body>
-    <div class="container-fluid" style="background-color: grey;">
-        <?php include 'menu.php' ?>
+<body style="background-color: grey;">
+<div class="container-fluid">
+    <?php include 'menu.php' ?>
 
-        <?php 
-				/* si non connecter  */
-				if ( !isset( $_SESSION['pseudo'] ) ) { ?>
-        <div class="row" style="background-color: grey;border-bottom: 2px solid black;">
-            <p class="col-lg-6 col-sm-6 col-xs-12"></p>
-            <img class="col-lg-5 col-sm-5 col-xs-12" style="border: 7px solid grey; border-radius: 7px;" src="https://static.lpnt.fr/images/2011/12/08/ratp-454337-jpg_306102_660x281.JPG">
-        </div>
-        <div class="row">
-            <h1 class="col-lg-12" style="text-align: center;"></h1>
-            <?php }
-							/* s i deja connecter */
-					else{
+    <?php
+    /* si non connecter  */
+    if (!isset($_SESSION['pseudo'])) { ?>
+    <div class="row" style="background-color: grey;border-bottom: 2px solid black;">
+        <p class="col-lg-6 col-sm-6 col-xs-12"></p>
+        <img class="col-lg-5 col-sm-5 col-xs-12" style="border: 7px solid grey; border-radius: 7px;"
+             src="https://static.lpnt.fr/images/2011/12/08/ratp-454337-jpg_306102_660x281.JPG">
+    </div>
+    <div class="row">
+        <h1 class="col-lg-12" style="text-align: center;"></h1>
+        <?php }
+        /* si deja connecter */
+        else {
 
-						?>
+            ?>
             <div class="container-fluid">
                 <div class="row">
-                    <div class="jumbotron col-lg-2" style="background-color: white;background-repeat: no-repeat;font-size: 2em;text-align: center;background-size: cover;">
+                    <div class="jumbotron col-lg-2" style="background-color: rgba(20,0,255,0.22);background-repeat: no-repeat;font-size: 2em;text-align: center;background-size: cover;">
                         <?php echo 'Bonjour ' . $_SESSION['pseudo']; ?>
                     </div>
                 </div>
@@ -46,8 +49,10 @@
                     <p>bienvenue</p>
                 </div>
             </div>
-            <?php } ?>
-        </div>
+        <?php } ?>
+    </div>
+</div>
+
 </body>
 
 </html>
