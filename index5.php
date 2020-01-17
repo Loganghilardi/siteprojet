@@ -22,7 +22,7 @@
     </style>
 </head>
 
-<body>
+<body style="background-color: grey;">
     <div class="container-fluid" style="background-color: grey;">
 
         <?php include 'menu.php' ;
@@ -49,7 +49,7 @@ catch(Exception $e)
 
 // On récupère tout le contenu de la table jeux_video
 $reponse = $bdd->query('SELECT * FROM fonction'); ?>
-        <table class="table table-hover" style="background-color: white;">
+        <table class="table table-hover" style="background-color: white; border: 8px inset darkslategrey; border-radius: 30px 30px 30px 30px;">
             <thead>
                 <tr>
                     <th>Code</th>

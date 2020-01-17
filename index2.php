@@ -16,7 +16,7 @@
         }
     </style>
 </head>
-<body>
+<body style="background-color: grey;">
 <div class="container-fluid" style="background-color: grey;">
     <?php
     try {

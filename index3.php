@@ -21,7 +21,7 @@
 </head>
 
 <body style="background-color: grey;">
-<div class="container-fluid">
+<div class="container-fluid" >
 
     <?php include 'menu.php';
     if (!isset($_SESSION['pseudo']))

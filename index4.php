@@ -23,10 +23,12 @@
 </head>
 
 <body style="background-color: grey;">
-    <div class="container-fluid">
+    <div class="container-fluid" >
+
 
 
         <?php include 'menu.php' ;
+
 if (!isset($_SESSION['pseudo']))
 {
     echo '<center><font color="red" size="4"><b>Vous devez vous connecter pour acceder à la page </center></font><br />';
@@ -49,7 +51,8 @@ catch(Exception $e)
 
 $reponse = $bdd->query('SELECT * FROM motif'); ?>
 
-        <table class="table table-responsive table-hover " style="background-color: white;">
+
+        <table class="table table-responsive table-hover " style="background-color: #ffffff; width: 50%; ">
             <thead>
                 <tr>
                     <th>Code</th>
@@ -64,7 +67,7 @@ while ($donnees = $reponse->fetch())
 {
     ?>
 
-                <tr>
+                <tr type="button" >
                     <td><?php echo $donnees['code']  ; ?></td>
                     <td><?php echo $donnees['libelle']  ; ?></td>
                     <td><?php echo $donnees['direction']  ; ?></td>
@@ -127,7 +130,10 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </div>
             </div>
         </div>
+
+
     </div>
+
 </body>
 
 </html>
