@@ -61,8 +61,8 @@
         }
     }
     // On récupère tout le contenu de la table
-    $reponse = $bdd->query('SELECT * FROM fonction'); ?>
-    <table class=" table table-hover" style="background-color: white;">
+    $reponse = $bdd->query('SELECT * FROM fonction ORDER BY Code ASC '); ?>
+    <table class=" table table-hover" style="background-color: white;" >
         <thead>
         <tr>
             <th>Code</th>

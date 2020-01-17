@@ -51,8 +51,8 @@ catch(Exception $e)
 
 $reponse = $bdd->query('SELECT * FROM motif'); ?>
 
-
-        <table class="table table-responsive table-hover " style="background-color: #ffffff; width: 50%; ">
+<div style=" max-height: 300px; overflow: auto; width: 50%">
+        <table class="table table-responsive table-hover " style="background-color: #ffffff; ">
             <thead>
                 <tr>
                     <th>Code</th>
@@ -67,7 +67,7 @@ while ($donnees = $reponse->fetch())
 {
     ?>
 
-                <tr type="button" >
+                <tr type="button"  >
                     <td><?php echo $donnees['code']  ; ?></td>
                     <td><?php echo $donnees['libelle']  ; ?></td>
                     <td><?php echo $donnees['direction']  ; ?></td>
@@ -79,6 +79,8 @@ while ($donnees = $reponse->fetch())
             </tbody>
 
         </table>
+</div>
+
 
         <?php
 if($_SERVER['REQUEST_METHOD'] === 'POST') {
