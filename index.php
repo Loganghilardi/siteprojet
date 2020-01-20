@@ -11,6 +11,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <style type="text/css">
+        .container {
+            width: 75%;
+        }
+
         .btn-group {
             float: right;
             margin-top: 7px;
@@ -21,7 +25,7 @@
 </head>
 
 <body style="background-color: grey;">
-<div class="container-fluid">
+<div class="container" style="background: white">
     <?php include 'menu.php' ?>
 
     <?php
@@ -41,7 +45,8 @@
             ?>
             <div class="container-fluid">
                 <div class="row">
-                    <div class="jumbotron col-lg-2" style="background-color: rgba(20,0,255,0.22);background-repeat: no-repeat;font-size: 2em;text-align: center;background-size: cover;">
+                    <div class="jumbotron col-lg-2"
+                         style="background-color: whitesmoke;background-repeat: no-repeat;font-size: 2em;text-align: center;background-size: cover; border: 2px solid black">
                         <?php echo 'Bonjour ' . $_SESSION['pseudo']; ?>
                     </div>
                 </div>

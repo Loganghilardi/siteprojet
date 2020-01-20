@@ -11,6 +11,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <style type="text/css">
+        .container {
+            width: 75%;
+        }
+
         .btn-group {
             float: right;
             margin-top: 7px;
@@ -21,7 +25,7 @@
 </head>
 
 <body style="background-color: grey;">
-<div class="container-fluid" >
+<div class="container" style="background: white">
 
     <?php include 'menu.php';
     if (!isset($_SESSION['pseudo']))
@@ -62,7 +66,7 @@
     }
     // On récupère tout le contenu de la table
     $reponse = $bdd->query('SELECT * FROM fonction ORDER BY Code ASC '); ?>
-    <table class=" table table-hover" style="background-color: white;" >
+    <table class=" table table-hover" style="background-color: whitesmoke;border: 2px solid black">
         <thead>
         <tr>
             <th>Code</th>
