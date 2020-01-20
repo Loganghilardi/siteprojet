@@ -2,7 +2,7 @@
 
 
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 
 <head>
     <title>Liste des Utilisateurs par Motif </title>
@@ -28,7 +28,7 @@
     <?php include 'menu.php';
 
     if (!isset($_SESSION['pseudo'])) {
-        echo '<center><font color="red" size="4"><b>Vous devez vous connecter pour acceder à la page </center></font><br />';
+        echo '<div style="text-align: center;"><span  style="color: red; font-size: medium; "><b>Vous devez vous connecter pour acceder à la page </div></font><br />';
     } else {
         try {
             // On se connecte à MySQL
@@ -87,7 +87,7 @@
                 while ($donnees = $reponse->fetch()) {
                     ?>
 
-                    <tr type="button">
+                    <tr>
                         <td><?php echo $donnees['code']; ?></td>
                         <td><?php echo $donnees['libelle']; ?></td>
                         <td><?php echo $donnees['direction']; ?></td>
@@ -128,15 +128,24 @@
 
                 <div class="modal-body">
                     <form method="post" action="index4.php">
-                        <p>Code</p>
-                        <input type="text" name="code" class="form-control">
-                        <p>Libellé</p>
-                        <input type="text" name="libelle" class="form-control">
-                        <p>Direction</p>
 
-                        <input type="text" name="direction" class="form-control">
-                        <p>Secteur</p>
-                        <input type="text" name="service" class="form-control">
+                        <label>Code
+                            <input type="text" name="code" class="form-control">
+                        </label>
+
+                        <label>Libellé
+                            <input type="text" name="libelle" class="form-control">
+                        </label>
+
+
+                        <label>Direction
+                            <input type="text" name="direction" class="form-control">
+                        </label>
+
+
+                        <label>Secteur
+                            <input type="text" name="service" class="form-control">
+                        </label>
 
                         <button type="submit" class="btn btn-primary">Ajouter</button>
                     </form>
@@ -144,8 +153,8 @@
             </div>
         </div>
     </div>
-    <div class="modal fade" id="suppmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-         aria-hidden="true">
+    <div aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal fade" id="suppmodal" role="dialog"
+         tabindex="-1">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -156,7 +165,9 @@
                 </div>
                 <div class="modal-body">
                     <form method="post" action="index4.php">
-                        <input type="text" name="delete">
+                        <label>
+                            <input type="text" name="delete">
+                        </label>
                         <button type="submit" class="btn btn-primary">Supprimer une ligne</button>
                     </form>
                 </div>
