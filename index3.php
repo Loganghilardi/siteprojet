@@ -1,6 +1,6 @@
 <?php session_start(); ?>
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 
 <head>
     <title>Liste des Fonctions</title>
@@ -26,7 +26,7 @@
     <?php include 'menu.php';
     if (!isset($_SESSION['pseudo']))
     {
-        echo '<center><font color="red" size="4"><b>Vous devez vous connecter pour acceder à la page </center></font><br />';
+        echo '<div style="text-align: center;"><span  style="color: red; font-size: medium; "><b>Vous devez vous connecter pour acceder à la page </div></font><br />';
     }
     else
     {
@@ -108,9 +108,13 @@
                 <div class="modal-body">
                     <form method="post" action="index3.php">
                         <p><strong>Code</strong></p>
-                        <input type="text" name="code" class="form-control" placeholder="">
+                        <label>
+                            <input type="text" name="code" class="form-control" placeholder="">
+                        </label>
                         <p><strong>Libellé</strong></p>
-                        <input type="text" name="libelle" class="form-control" placeholder="">
+                        <label>
+                            <input type="text" name="libelle" class="form-control" placeholder="">
+                        </label>
                         <button type="submit" style="margin: 5px" class="btn btn-primary">Ajouter</button>
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
                     </form>
@@ -130,7 +134,9 @@
                 </div>
                 <div class="modal-body">
                     <form method="post" action="index3.php">
-                        <input type="text" name="delete">
+                        <label>
+                            <input type="text" name="delete">
+                        </label>
                         <button type="submit" class="btn btn-primary">Supprimer une ligne</button>
                     </form>
                 </div>
