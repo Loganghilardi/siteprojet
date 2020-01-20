@@ -17,6 +17,12 @@
             width: 75%;
         }
 
+        .btn-group {
+            float: right;
+            margin-top: 7px;
+            margin-right: 2px;
+        }
+
         button {
 
 
@@ -71,7 +77,7 @@
 
                 </form>
             </div>
-            <div class="col-lg-5">
+            <div class="col-lg-6" style=" text-align: right">
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" disabled
                         style="width: 75px">OK
                 </button>
@@ -99,7 +105,7 @@
             </div>
 
         </div>
-        <div class="row">
+        <div class="row" style="margin-top: 20px">
             <div class="col-lg-12">
                 <table class="table table table-hover" style="background: whitesmoke; border: solid 2px black">
                     <thead>
