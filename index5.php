@@ -47,6 +47,15 @@ catch(Exception $e)
         ?>
     </div>
     <?php } ?>
+
+    <?php if(isset($_POST['go'])) {
+        echo 'ouiiiiii';
+
+    }
+    ?>
+    <form method="post" action="index5.php">
+        <input type="submit" value="envoyer" name="go" />
+    </form>
 </body>
 
 </html>

@@ -1,7 +1,6 @@
 <?php session_start(); ?>
 
 
-
 <!DOCTYPE html>
 <html>
 
@@ -23,156 +22,150 @@
 </head>
 
 <body style="background-color: grey;">
-    <div class="container-fluid" >
+<div class="container-fluid">
 
 
+    <?php include 'menu.php';
 
-        <?php include 'menu.php' ;
-
-if (!isset($_SESSION['pseudo']))
-{
-    echo '<center><font color="red" size="4"><b>Vous devez vous connecter pour acceder à la page </center></font><br />';
-}
-else
-{ 
-try
-{
-	// On se connecte à MySQL
-	$bdd = new PDO('mysql:host=localhost;dbname=test;charset=utf8', 'root', '');
-}
-catch(Exception $e)
-{
-	// En cas d'erreur, on affiche un message et on arrête tout
-        die('Erreur : '.$e->getMessage());
-}
+    if (!isset($_SESSION['pseudo'])) {
+        echo '<center><font color="red" size="4"><b>Vous devez vous connecter pour acceder à la page </center></font><br />';
+    } else {
+        try {
+            // On se connecte à MySQL
+            $bdd = new PDO('mysql:host=localhost;dbname=test;charset=utf8', 'root', '');
+        } catch (Exception $e) {
+            // En cas d'erreur, on affiche un message et on arrête tout
+            die('Erreur : ' . $e->getMessage());
+        }
 
 
+        $reponse = $bdd->query('SELECT * FROM motif ORDER BY code ASC'); ?>
 
 
-$reponse = $bdd->query('SELECT * FROM motif ORDER BY code ASC'); ?>
+        <?php
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if (!empty($_POST['delete'])) {
 
-<div style=" max-height: 300px; overflow: auto; width: 50%">
-        <table class="table table-responsive table-hover " style="background-color: #ffffff; ">
-            <thead>
+                $supp = $_POST['delete'];
+                $req = $bdd->prepare("DELETE FROM motif WHERE code = :supp");
+                $req->bindParam(':supp', $supp, PDO::PARAM_STR_CHAR);
+                $req->execute();
+            }
+            if (!empty($_POST['code'])) {
+
+
+                $code = $_POST['code'];
+                $libelle = $_POST['libelle'];
+                $direction = $_POST['direction'];
+                $service = $_POST['service'];
+
+
+                $req = $bdd->prepare('INSERT INTO motif(code,libelle,direction,service) VALUES (:code, :libelle, :direction, :service) ');
+                $req->execute(array(
+                    'code' => $code,
+                    'libelle' => $libelle,
+                    'direction' => $direction,
+                    'service' => $service));
+
+
+            }
+            header('refresh: 0');
+        }
+        ?>
+        <div style="overflow: auto;max-height: 60vh;">
+            <table class="table table table-hover " style="background-color: #ffffff; ">
+                <thead>
                 <tr>
                     <th>Code</th>
                     <th>Libellé</th>
                     <th>Direction</th>
                     <th>Secteur</th>
                 </tr>
-            </thead>
-            <tbody>
-                <?php 
-while ($donnees = $reponse->fetch())
-{
-    ?>
+                </thead>
+                <tbody>
+                <?php
+                while ($donnees = $reponse->fetch()) {
+                    ?>
 
-                <tr type="button"  >
-                    <td><?php echo $donnees['code']  ; ?></td>
-                    <td><?php echo $donnees['libelle']  ; ?></td>
-                    <td><?php echo $donnees['direction']  ; ?></td>
-                    <td><?php echo $donnees['service']  ; ?></td>
-                </tr>
+                    <tr type="button">
+                        <td><?php echo $donnees['code']; ?></td>
+                        <td><?php echo $donnees['libelle']; ?></td>
+                        <td><?php echo $donnees['direction']; ?></td>
+                        <td><?php echo $donnees['service']; ?></td>
+                    </tr>
 
 
                 <?php } ?>
-            </tbody>
+                </tbody>
 
-        </table>
-</div>
-
-
-        <?php
-if($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (!empty($_POST['delete'])) {
-
-        $supp = $_POST['delete'];
-    $req = $bdd->prepare("DELETE FROM motif WHERE code = :supp");
-    $req->bindParam(':supp', $supp, PDO::PARAM_STR_CHAR);
-    $req->execute();
-    }
-    if (!empty($_POST['code'])) {
-
-
-
-
-        $code = $_POST['code'];
-        $libelle = $_POST['libelle'];
-        $direction = $_POST['direction'];
-        $service = $_POST['service'];
-
-
-
-
-    
-    $req = $bdd->prepare('INSERT INTO motif(code,libelle,direction,service) VALUES (:code, :libelle, :direction, :service) ');
-        $req->execute(array(
-        'code' => $code,
-        'libelle' => $libelle,
-        'direction' => $direction,
-        'service' => $service));
-
-    
-}  header('refresh: 0'); }?>
-
+            </table>
+        </div>
 
 
         <div class="col-lg-3 col-md-4 col-sm-5 col-xs-12" style="margin: 1vh;">
             <div class="btn-group" role="group" aria-label="exemple">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Ajouter</button>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Ajouter
+                </button>
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#suppmodal  ">
                     Supprimer
                 </button>
+
             </div>
         </div>
-<?php  } ?>
-        <div class="modal fade col-lg-2" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="align-center">
-            <div class="modsal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-tittle" id="exampleModalLabel">Ajout</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    </div>
 
-                    <div class="modal-body">
-                        <form method="post" action="index4.php">
-                            <p>Code</p>
-                            <input type="text" name="code" class="form-control">
-                            <p>Libellé</p>
-                            <input type="text" name="libelle" class="form-control">
-                            <p>Direction</p>
+    <?php } ?>
 
-                            <input type="text" name="direction" class="form-control">
-                            <p>Secteur</p>
-                            <input type="text" name="service" class="form-control">
-                            <button type="submit" class="btn btn-primary">Ajouter</button>
-                        </form>
-                    </div>
+
+    <div class="modal fade " id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ajout</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                </div>
+
+                <div class="modal-body">
+                    <form method="post" action="index4.php">
+                        <p>Code</p>
+                        <input type="text" name="code" class="form-control">
+                        <p>Libellé</p>
+                        <input type="text" name="libelle" class="form-control">
+                        <p>Direction</p>
+
+                        <input type="text" name="direction" class="form-control">
+                        <p>Secteur</p>
+                        <input type="text" name="service" class="form-control">
+
+                        <button type="submit" class="btn btn-primary">Ajouter</button>
+                    </form>
                 </div>
             </div>
         </div>
-        <div class="modal fade" id="suppmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-             aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Supprimer</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form method="post" action="index4.php">
-                            <input type="text" name="delete">
-                            <button type="submit" class="btn btn-primary">Supprimer une ligne</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
     </div>
+    <div class="modal fade" id="suppmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Supprimer</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" action="index4.php">
+                        <input type="text" name="delete">
+                        <button type="submit" class="btn btn-primary">Supprimer une ligne</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
 
 </body>
 
