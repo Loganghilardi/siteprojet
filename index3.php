@@ -15,6 +15,10 @@
             width: 75%;
         }
 
+        .btn {
+            border-radius: 0px;
+        }
+
         .btn-group {
             float: right;
             margin-top: 7px;
@@ -66,7 +70,7 @@
     }
     // On récupère tout le contenu de la table
     $reponse = $bdd->query('SELECT * FROM fonction ORDER BY Code ASC '); ?>
-    <table class=" table table-hover" style="background-color: whitesmoke;border: 2px solid #337ab7">
+    <table class=" table table-hover" style="background-color: whitesmoke;border: 2px solid #cfcfcf">
         <thead>
         <tr>
             <th>Code</th>

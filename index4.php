@@ -16,6 +16,10 @@
             width: 75%;
         }
 
+        .btn {
+            border-radius: 0px;
+        }
+
         .btn-group {
             float: right;
             margin-top: 7px;
@@ -77,7 +81,7 @@
         }
         ?>
         <div style="overflow: auto;max-height: 60vh;">
-            <table class="table table table-hover " style="background-color: whitesmoke;border: solid 2px #337ab7 ">
+            <table class="table table table-hover " style="background-color: whitesmoke;border: solid 2px #cfcfcf ">
                 <thead>
                 <tr>
                     <th>Code</th>

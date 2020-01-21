@@ -13,6 +13,10 @@
             width: 75%;
         }
 
+        .btn {
+            border-radius: 0px;
+        }
+
         .btn-group {
             float: right;
             margin-top: 7px;
@@ -73,7 +77,7 @@
             <?php
 
             $reponse = $bdd->query('SELECT * FROM exercice ORDER BY Annee DESC'); ?>
-            <table class="table table-hover" style="background-color: whitesmoke;border: 2px solid #337ab7">
+            <table class="table table-hover" style="background-color: whitesmoke;border: 2px solid #cfcfcf">
                 <thead>
                 <tr>
                     <th>Annee</th>

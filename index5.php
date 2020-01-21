@@ -17,6 +17,10 @@
             width: 75%;
         }
 
+        .btn {
+            border-radius: 0px;
+        }
+
         .btn-group {
             float: right;
             margin-top: 7px;
@@ -78,10 +82,10 @@
                 </form>
             </div>
             <div class="col-lg-6" style=" text-align: right">
-                <button type="button" class="btn btn-light" data-toggle="modal" data-target="#exampleModal" disabled
+                <button type="button" class=" btn btn-light" data-toggle="modal" data-target="#exampleModal" disabled
                         style="width: 75px">OK
                 </button>
-                <button type="button" class="btn light" data-toggle="modal" data-target="#suppmodal  "
+                <button type="button" class="btn btn-light" data-toggle="modal" data-target="#suppmodal  "
                         style="width: 75px">
                     Exécuter
                 </button>
@@ -107,7 +111,7 @@
         </div>
         <div class="row" style="margin-top: 20px">
             <div class="col-lg-12">
-                <table class="table table table-hover" style="background: whitesmoke; border: solid 2px #337ab7">
+                <table class="table table table-hover" style="background: whitesmoke; border: solid 2px #cfcfcf">
                     <thead>
                     <tr>
                         <th>Année</th>

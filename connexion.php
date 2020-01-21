@@ -3,7 +3,7 @@
     <input type="text" name="pseudo" class="form-control" placeholder="logan_77">
     <p><strong>Mot de passe</strong></p>
     <input type="password" name="pass" class="form-control" placeholder="***">
-    <button type="submit" class="btn btn-primary" style="margin: 5px">Se Connecter</button>
+    <button type="submit" class="btn btn-success" style="margin: 5px">Se Connecter</button>
 </form>
 
 

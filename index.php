@@ -15,6 +15,10 @@
             width: 75%;
         }
 
+        .btn {
+            border-radius: 0px;
+        }
+
         .btn-group {
             float: right;
             margin-top: 7px;
@@ -31,7 +35,7 @@
     <?php
     /* si non connecter  */
     if (!isset($_SESSION['pseudo'])) { ?>
-    <div class="row" style="background-color: white;border-bottom: 2px solid #f0f0f0;">
+    <div class="row" style="background-color: white;border-bottom: 2px solid #cfcfcf;">
         <p class="col-lg-6 col-sm-6 col-xs-12"></p>
         <img class="col-lg-5 col-sm-5 col-xs-12" style="border: 7px solid #337ab7; border-radius: 7px;"
              src="https://static.lpnt.fr/images/2011/12/08/ratp-454337-jpg_306102_660x281.JPG">
@@ -46,7 +50,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="jumbotron col-lg-2"
-                         style="background-color: whitesmoke;background-repeat: no-repeat;font-size: 2em;text-align: center;background-size: cover; border: 2px solid black">
+                         style="background-color: whitesmoke;background-repeat: no-repeat;font-size: 2em;text-align: center;background-size: cover; border: 2px solid #cfcfcf">
                         <?php echo 'Bonjour ' . $_SESSION['pseudo']; ?>
                     </div>
                 </div>
