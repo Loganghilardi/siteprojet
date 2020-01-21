@@ -25,7 +25,7 @@
     </style>
 </head>
 
-<body style="background-color: grey;">
+<body style="background-color: #f0f0f0;">
 <div class="container" style="background: white">
 
 
@@ -77,7 +77,7 @@
         }
         ?>
         <div style="overflow: auto;max-height: 60vh;">
-            <table class="table table table-hover " style="background-color: whitesmoke;border: solid 2px black ">
+            <table class="table table table-hover " style="background-color: whitesmoke;border: solid 2px #337ab7 ">
                 <thead>
                 <tr>
                     <th>Code</th>
@@ -108,9 +108,9 @@
 
         <div class="col-lg-3 col-md-4 col-sm-5 col-xs-12" style="margin: 1vh;">
             <div class="btn-group" role="group" aria-label="exemple">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Ajouter
+                <button type="button" class="btn btn-light" data-toggle="modal" data-target="#exampleModal">Ajouter
                 </button>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#suppmodal  ">
+                <button type="button" class="btn btn-light" data-toggle="modal" data-target="#suppmodal  ">
                     Supprimer
                 </button>
 
@@ -151,7 +151,7 @@
                             <input type="text" name="service" class="form-control">
                         </label>
 
-                        <button type="submit" class="btn btn-primary">Ajouter</button>
+                        <button type="submit" class="btn btn-light">Ajouter</button>
                     </form>
                 </div>
             </div>
@@ -172,7 +172,7 @@
                         <label>
                             <input type="text" name="delete">
                         </label>
-                        <button type="submit" class="btn btn-primary">Supprimer une ligne</button>
+                        <button type="submit" class="btn btn-light">Supprimer une ligne</button>
                     </form>
                 </div>
             </div>

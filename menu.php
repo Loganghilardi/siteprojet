@@ -14,12 +14,13 @@
 						} 
 						/* si pas connecter affiche les boutons connexion et inscription */
 					else {?>
-    <div class="btn-group">
-        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Connexion
-        </button>
-        <div class="dropdown-menu right">
-            <?php include 'connexion.php' ?>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false">
+                                Connexion
+                            </button>
+                            <div class="dropdown-menu right">
+                                <?php include 'connexion.php' ?>
         </div>
     </div>
     <!-- <div class="btn-group">

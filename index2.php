@@ -20,7 +20,7 @@
         }
     </style>
 </head>
-<body style="background-color: grey;">
+<body style="background-color: #f0f0f0;">
 <div class="container" style="background: white">
     <?php
     try {
@@ -73,7 +73,7 @@
             <?php
 
             $reponse = $bdd->query('SELECT * FROM exercice ORDER BY Annee DESC'); ?>
-            <table class="table table-hover" style="background-color: whitesmoke;border: 2px solid black">
+            <table class="table table-hover" style="background-color: whitesmoke;border: 2px solid #337ab7">
                 <thead>
                 <tr>
                     <th>Annee</th>
@@ -103,13 +103,13 @@
         <div class="col-lg-3 col-md-4 col-sm-5 col-xs-12" style="margin: 1vh;">
 
             <div class="btn-group" role="group" aria-label="Exemple">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                <button type="button" class="btn btn-light" data-toggle="modal" data-target="#exampleModal">
                     Ajouter
                 </button>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modifmodal">
+                <button type="button" class="btn btn-light" data-toggle="modal" data-target="#modifmodal">
                     Modifier
                 </button>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#suppmodal  ">
+                <button type="button" class="btn btn-light" data-toggle="modal" data-target="#suppmodal  ">
                     Supprimer
                 </button>
             </div>
@@ -131,7 +131,7 @@
                                 <input type="radio" name="fermee" value="Non" id="Non" checked="checked"/> <label
                                         for="Non">Ouverte</label>
                                 <input type="radio" name="fermee" value="Oui" id="Oui"/> <label for="Oui">Fermée</label>
-                                <button type="submit" style="margin: 5px" class="btn btn-primary">Ajouter</button>
+                                <button type="submit" style="margin: 5px" class="btn btn-light">Ajouter</button>
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
                             </form>
                         </div>
@@ -176,7 +176,7 @@
                         <div class="modal-body">
                             <form method="post" action="index2.php">
                                 <input type="text" name="postdelete">
-                                <button type="submit" class="btn btn-primary">Supprimer une ligne</button>
+                                <button type="submit" class="btn btn-light">Supprimer une ligne</button>
                             </form>
                         </div>
                     </div>

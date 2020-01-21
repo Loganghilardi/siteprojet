@@ -24,7 +24,7 @@
     </style>
 </head>
 
-<body style="background-color: grey;">
+<body style="background-color: #f0f0f0;">
 <div class="container" style="background: white">
 
     <?php include 'menu.php';
@@ -66,7 +66,7 @@
     }
     // On récupère tout le contenu de la table
     $reponse = $bdd->query('SELECT * FROM fonction ORDER BY Code ASC '); ?>
-    <table class=" table table-hover" style="background-color: whitesmoke;border: 2px solid black">
+    <table class=" table table-hover" style="background-color: whitesmoke;border: 2px solid #337ab7">
         <thead>
         <tr>
             <th>Code</th>
@@ -90,10 +90,10 @@
     ?>
     <div class="col-lg-3 col-md-4 col-sm-5 col-xs-12" style="margin: 1vh;">
         <div class="btn-group" role="group" aria-label="Exemple">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+            <button type="button" class="btn btn-light" data-toggle="modal" data-target="#exampleModal">
                 Ajouter
             </button>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#suppmodal  ">
+            <button type="button" class="btn btn-light" data-toggle="modal" data-target="#suppmodal  ">
                 Supprimer
             </button>
         </div>
@@ -119,7 +119,7 @@
                         <label>
                             <input type="text" name="libelle" class="form-control" placeholder="">
                         </label>
-                        <button type="submit" style="margin: 5px" class="btn btn-primary">Ajouter</button>
+                        <button type="submit" style="margin: 5px" class="btn btn-light">Ajouter</button>
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
                     </form>
                 </div>
@@ -141,7 +141,7 @@
                         <label>
                             <input type="text" name="delete">
                         </label>
-                        <button type="submit" class="btn btn-primary">Supprimer une ligne</button>
+                        <button type="submit" class="btn btn-light">Supprimer une ligne</button>
                     </form>
                 </div>
             </div>

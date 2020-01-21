@@ -33,7 +33,7 @@
     </style>
 </head>
 
-<body style="background-color: grey;">
+<body style="background-color: #f0f0f0;">
 <div class="container" style="background-color: white;">
 
 
@@ -78,26 +78,26 @@
                 </form>
             </div>
             <div class="col-lg-6" style=" text-align: right">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" disabled
+                <button type="button" class="btn btn-light" data-toggle="modal" data-target="#exampleModal" disabled
                         style="width: 75px">OK
                 </button>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#suppmodal  "
+                <button type="button" class="btn light" data-toggle="modal" data-target="#suppmodal  "
                         style="width: 75px">
                     Exécuter
                 </button>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#suppmodal  " disabled
-                        style="width: 75px">
+                <button type="button" class="btn light" data-toggle="modal" data-target="#suppmodal  " disabled
+                        style="width: 75px;">
                     Trier...
                 </button>
                 <br>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#suppmodal  ">
+                <button type="button" class="btn light" data-toggle="modal" data-target="#suppmodal  ">
                     Annuler
                 </button>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#suppmodal  "
+                <button type="button" class="btn light" data-toggle="modal" data-target="#suppmodal  "
                         style="width: 75px">
                     Nouveau
                 </button>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#suppmodal  "
+                <button type="button" class="btn light" data-toggle="modal" data-target="#suppmodal  "
                         style="width: 75px">
                     Aide
                 </button>
@@ -107,7 +107,7 @@
         </div>
         <div class="row" style="margin-top: 20px">
             <div class="col-lg-12">
-                <table class="table table table-hover" style="background: whitesmoke; border: solid 2px black">
+                <table class="table table table-hover" style="background: whitesmoke; border: solid 2px #337ab7">
                     <thead>
                     <tr>
                         <th>Année</th>
