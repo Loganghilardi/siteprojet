@@ -56,7 +56,7 @@
                 <form method="post" action="index5.php">
                     <label>Matricule
                         <input style="width: 179px " type="text" name="matricule">
-                    </label></br>
+                    </label><br>
                     <label>Nom
 
                         <input style="margin-left: 24px" type="text" name="nom">
@@ -64,7 +64,7 @@
                     <label>Prénom
 
                         <input type="text" name="prenom">
-                    </label></br>
+                    </label><br>
                     <label>Coupon
 
                         <input type="text" name="coupon">
@@ -89,7 +89,7 @@
                         style="width: 75px">
                     Trier...
                 </button>
-                </br>
+                <br>
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#suppmodal  ">
                     Annuler
                 </button>
