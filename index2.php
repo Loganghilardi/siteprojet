@@ -156,11 +156,11 @@
                         <div class="modal-body">
                             <form method="post" action="index2.php">
                                 <label>Année à modifier </label></br>
-                                <input type="text" name="varpost">
+                                <input type="text" class="form-control" name="varpost" placeholder="XXXX">
                                 <input type="radio" name="modif" value="Non" id="Non" checked="checked"/><label
                                         for="Non">Ouverte</label>
                                 <input type="radio" name="modif" value="Oui" id="Oui"/><label for="Oui">Fermée</label>
-                                <button type="submit">Modifier</button>
+                                <button class="btn btn-light" type="submit">Modifier</button>
                             </form>
                         </div>
                     </div>
@@ -179,7 +179,10 @@
                         </div>
                         <div class="modal-body">
                             <form method="post" action="index2.php">
-                                <input type="text" name="postdelete">
+                                <label>
+                                    <input type="text" class="form-control" name="delete"
+                                           placeholder="Année à supprimer">
+                                </label>
                                 <button type="submit" class="btn btn-light">Supprimer une ligne</button>
                             </form>
                         </div>

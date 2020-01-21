@@ -1,9 +1,27 @@
-<div class="navbar navbar-inverse">
+<style>
+    a {
+        color: black;
+    }
+
+    a:hover {
+        color: black;
+    }
+
+    a:visited {
+        color: black;
+    }
+
+    #ah {
+        color: white;
+    }
+</style>
+
+<div class="navbar navbar-light bg-light" style="background: #f5f5f5">
     <a class="navbar-brand" href="index.php">Relève et détachements</a>
     <?php 
 				/* si connecter afficher le menu complet et le bouton deconnecter */
 					if ( isset( $_SESSION['pseudo'] ) ) { ?>
-                        <a class="btn btn-danger" href="deconnexion.php" role="button"
+                        <a id="ah" class="btn btn-danger" href="deconnexion.php" role="button"
                            style="float: right;margin: 7px;">Deconnexion</a>
                         <ul class="nav navbar-nav">
                             <li><a href="index2.php">Exercices</a></li>
@@ -33,4 +51,5 @@
 					    	</div>
 					    </div> -->
     <?php } ?>
+
 </div>

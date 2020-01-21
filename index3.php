@@ -124,7 +124,7 @@
                             <input type="text" name="libelle" class="form-control" placeholder="">
                         </label>
                         <button type="submit" style="margin: 5px" class="btn btn-light">Ajouter</button>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                        <button type="button" class="btn btn-light" data-dismiss="modal">Fermer</button>
                     </form>
                 </div>
             </div>
@@ -143,7 +143,7 @@
                 <div class="modal-body">
                     <form method="post" action="index3.php">
                         <label>
-                            <input type="text" name="delete">
+                            <input type="text" class="form-control" name="delete" placeholder="Année à supprimer">
                         </label>
                         <button type="submit" class="btn btn-light">Supprimer une ligne</button>
                     </form>

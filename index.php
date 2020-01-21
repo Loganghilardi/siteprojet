@@ -37,7 +37,7 @@
     if (!isset($_SESSION['pseudo'])) { ?>
     <div class="row" style="background-color: white;border-bottom: 2px solid #cfcfcf;">
         <p class="col-lg-6 col-sm-6 col-xs-12"></p>
-        <img class="col-lg-5 col-sm-5 col-xs-12" style="border: 7px solid #337ab7; border-radius: 7px;"
+        <img class="col-lg-12 col-sm-12 col-xs-12" style="border: 0px solid ; border-radius: 200px;"
              src="https://static.lpnt.fr/images/2011/12/08/ratp-454337-jpg_306102_660x281.JPG">
     </div>
     <div class="row">
@@ -51,11 +51,11 @@
                 <div class="row">
                     <div class="jumbotron col-lg-2"
                          style="background-color: whitesmoke;background-repeat: no-repeat;font-size: 2em;text-align: center;background-size: cover; border: 2px solid #cfcfcf">
-                        <?php echo 'Bonjour ' . $_SESSION['pseudo']; ?>
+                        <?php echo 'Bonjour ' . $_SESSION['pseudo'] . ' le magnifique' ?>
                     </div>
                 </div>
                 <div class="row">
-                    <p>bienvenue</p>
+                    <p>Plop</p>
                 </div>
             </div>
         <?php } ?>

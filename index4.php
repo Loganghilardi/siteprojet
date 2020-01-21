@@ -174,7 +174,7 @@
                 <div class="modal-body">
                     <form method="post" action="index4.php">
                         <label>
-                            <input type="text" name="delete">
+                            <input type="text" class="form-control" name="delete" placeholder="Année à supprimer">
                         </label>
                         <button type="submit" class="btn btn-light">Supprimer une ligne</button>
                     </form>
