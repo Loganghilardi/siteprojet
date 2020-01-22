@@ -34,6 +34,7 @@
             margin-right: 1px;
         }
 
+
     </style>
 </head>
 
@@ -49,10 +50,40 @@
     } else {
     try {
         // On se connecte à MySQL
-        $bdd = new PDO('mysql:host=localhost;dbname=test;charset=utf8', 'root', '');
+        $bdd = new PDO('mysql:host=localhost;dbname=test', 'root', '', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+
     } catch (Exception $e) {
         // En cas d'erreur, on affiche un message et on arrête tout
         die('Erreur : ' . $e->getMessage());
+
+    }
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+        if (!empty($_POST['nannee'])) {
+
+
+            $annee = $_POST['nannee'];
+            $categorie = $_POST['ncategorie'];
+            $matricule = $_POST['nmatricule'];
+            $nom = $_POST['nnom'];
+            $prenom = $_POST['nprenom'];
+            $coupon = $_POST['ncoupon'];
+            $jour = $_POST['njour'];
+
+            $req = $bdd->prepare('INSERT INTO releve(annee,categorie,matricule,nom,prenom,coupon,jour) VALUES (:annee, :categorie , :matricule, :nom, :prenom, :coupon, :jour ) ');
+            $req->execute(array(
+                'annee' => $annee,
+                'categorie' => $categorie,
+                'matricule' => $matricule,
+                'nom' => $nom,
+                'prenom' => $prenom,
+                'coupon' => $coupon,
+                'jour' => $jour));
+            echo 'hello';
+
+
+        }
+        header('refresh: 10');
     }
     ?>
     <div class="row">
@@ -138,33 +169,81 @@
                 </tbody>
             </table>
         </div>
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-             aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Ajout</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form method="post" action="index2.php">
-                            <p><strong>Année</strong></p>
-                            <input type="text" name="annee" class="form-control" placeholder="0000">
-                            <input type="radio" name="fermee" value="Non" id="Non" checked="checked"/> <label
-                                for="Non">Ouverte</label>
-                            <input type="radio" name="fermee" value="Oui" id="Oui"/> <label for="Oui">Fermée</label>
-                            <button type="submit" style="margin: 5px" class="btn btn-light">Ajouter</button>
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-                        </form>
-                    </div>
+    </div>
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ajout</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" style="height:  40vh;">
+                    <form method="post" action="index5.php">
+
+                        <div class="form-row">
+                            <div class="form-group col-md-6 col-sm-6 col-xs-6">
+                                <label for="nnom">Nom</label>
+                                <input type="text" class="form-control" placeholder="Nom" name="nnom">
+                            </div>
+                            <div class="form-group col-md-6 col-sm-6 col-xs-6">
+                                <label for="nprenom">Prénom</label>
+                                <input type="text" class="form-control" placeholder="Prénom"
+                                       name="nprenom">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-6 col-sm-6 col-xs-6">
+                                <label for="ncoupon">XXXXXX</label>
+                                <input type="text" class="form-control" placeholder="Coupon"
+                                       name="ncoupon">
+                            </div>
+                            <div class="form-group col-md-6 col-sm-6 col-xs-6">
+                                <label for="nmatricule">Matricule</label>
+                                <input type="text" class="form-control" placeholder="Matricule"
+                                       name="nmatricule">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-6 col-sm-6 col-xs-6">
+                                <label for="nannee">Année</label>
+                                <input type="text" class="form-control" name="nannee">
+                            </div>
+                            <div class="form-group col-md-6 col-sm-6 col-xs-6">
+                                <label for="njour">Date</label>
+                                <input type="text" class="form-control" name="njour">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-6 col-sm-6 col-xs-6">
+                                <label for="ncategorie">Catégorie</label>
+                                <select class="form-control" name="ncategorie">
+                                    <option selected>AR</option>
+                                    <option>AC</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-6 col-sm-6 col-xs-6">
+
+
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-light">Ajouter</button>
+                    </form>
                 </div>
             </div>
         </div>
-
     </div>
 </div>
+
+
+</div>
+
 
 <?php } ?>
 </body>
