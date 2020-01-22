@@ -27,6 +27,12 @@
             margin-right: 2px;
         }
 
+        #executer {
+            position absolute;
+            margin-left: 1053px;
+            margin-top: -220px;
+        }
+
         button {
 
 
@@ -39,6 +45,7 @@
 </head>
 
 <body style="background-color: #f0f0f0;">
+
 <div class="container" style="background-color: white;">
 
 
@@ -57,12 +64,12 @@
         die('Erreur : ' . $e->getMessage());
 
     }
+    $reponse = $bdd->query('SELECT * FROM releve ');
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        /* ajout a la bdd */
+        if (!empty($_POST['njour'])) {
 
-        if (!empty($_POST['nannee'])) {
 
-
-            $annee = $_POST['nannee'];
             $categorie = $_POST['ncategorie'];
             $matricule = $_POST['nmatricule'];
             $nom = $_POST['nnom'];
@@ -70,114 +77,136 @@
             $coupon = $_POST['ncoupon'];
             $jour = $_POST['njour'];
 
-            $req = $bdd->prepare('INSERT INTO releve(annee,categorie,matricule,nom,prenom,coupon,jour) VALUES (:annee, :categorie , :matricule, :nom, :prenom, :coupon, :jour ) ');
+            $req = $bdd->prepare('INSERT INTO releve(categorie,matricule,nom,prenom,coupon,jour) VALUES (:categorie , :matricule, :nom, :prenom, :coupon, :jour ) ');
             $req->execute(array(
-                'annee' => $annee,
                 'categorie' => $categorie,
                 'matricule' => $matricule,
                 'nom' => $nom,
                 'prenom' => $prenom,
                 'coupon' => $coupon,
                 'jour' => $jour));
-            echo 'hello';
 
 
         }
-        header('refresh: 10');
+        $matricule = $_POST['matricule'];
+        $nom = $_POST['nom'];
+        $prenom = $_POST['prenom'];
+        $coupon = $_POST['coupon'];
+
+        $req = $bdd->prepare('SELECT * FROM releve WHERE matricule = :matricule OR nom = :nom OR prenom = :prenom OR coupon = :coupon');
+        $req->execute(array(
+            'matricule' => $matricule,
+            'prenom' => $prenom,
+            'nom' => $nom,
+            'coupon' => $coupon,
+        ));
+        $resultat = $req->fetch();
+        if (!empty($resultat)) {
+            $_SESSION['matricule'] = $matricule;
+        }
+        header('refresh: 0');
     }
+
     ?>
+    <?php
+    if (empty($_SESSION['matricule'])) { ?>
     <div class="row">
-        <div class="col-lg-5">
-            <form method="post" action="index5.php">
+        <!--formulaire recherche-->
 
+
+        <form method="post" action="index5.php" id="formrecherche" class="col-lg-12">
+            <div class="col-lg-6">
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="matricule">Matricule</label>
-                        <input type="text" class="form-control" id="matricule" placeholder="XXXXXX">
+                        <label for="matricule"> Matricule</label>
+                        <input type="text" class="form-control" id="matricule" name="matricule">
                     </div>
 
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="nom">Nom</label>
-                        <input type="text" class="form-control" id="nom" placeholder="Nom">
+                        <label for="nom"> Nom</label>
+                        <input type="text" class="form-control" id="nom" name="nom">
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="prenom">Prénom</label>
-                        <input type="text" class="form-control" id="prenom" placeholder="Prénom">
+                        <label for="prenom"> Prénom</label>
+                        <input type="text" class="form-control" id="prenom" name="prenom">
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="coupon">Coupon</label>
-                        <input type="text" class="form-control" id="coupon" placeholder="N°Coupon">
+                        <label for="coupon"> Coupon</label>
+                        <input type="text" class="form-control" id="coupon" name="coupon" ">
                     </div>
-                    <div class="form-group col-md-6">
-                        <label for="annee">Année</label>
-                        <input type="text" class="form-control" id="annee" placeholder="XXXX">
-                    </div>
+
                 </div>
-
-            </form>
-        </div>
+            </div>
 
 
-        <div class="col-lg-6" style=" text-align: right">
-            <button type="button" class=" btn btn-light" data-toggle="modal" data-target="#exampleModal" disabled
-                    style="width: 75px">OK
-            </button>
-            <button type="button" class="btn btn-light" data-toggle="modal" data-target="#suppmodal  "
-                    style="width: 75px">
-                Exécuter
-            </button>
-            <button type="button" class="btn light" data-toggle="modal" data-target="#suppmodal  " disabled
-                    style="width: 75px;">
-                Trier...
-            </button>
-            <br>
-            <button type="button" class="btn light" data-toggle="modal" data-target="#suppmodal  ">
-                Annuler
-            </button>
-            <button type="button" class="btn light" data-toggle="modal" data-target="#exampleModal"
-                    style="width: 75px">
-                Nouveau
-            </button>
-            <button type="button" class="btn light" data-toggle="modal" data-target="#suppmodal  "
-                    style="width: 75px">
-                Aide
-            </button>
+            <!-- groupe bouton -->
 
-        </div>
+            <div class="col - lg - 6" style=" text - align: center">
+                <button type="button" class=" btn btn - light" data-toggle="modal" data-target="#exampleModal"
+                        disabled
+                        style="width: 75px"> OK
+                </button>
+                <button type="submit" class="btn btn-light"
+                        style="width: 75px">
+                    Exécuter
+                </button>
+                <button type="button" class="btn light" data - toggle="modal" data - target="#suppmodal  " disabled
+                        style="width: 75px;">
+                    Trier...
+                </button>
+                <br>
+                <button type="button" class="btn light" data - toggle="modal" data - target="#suppmodal  ">
+                    Annuler
+                </button>
+                <button type="button" class="btn light" data - toggle="modal" data - target="#exampleModal"
+                        style="width: 75px">
+                    Nouveau
+                </button>
+                <button type="button" class="btn light" data - toggle="modal" data - target="#suppmodal  "
+                        style="width: 75px">
+                    Aide
+                </button>
 
+            </div>
+        </form>
     </div>
+
+
+    <!--tableau -->
     <div class="row" style="margin-top: 20px">
         <div class="col-lg-12 " style=" overflow: auto">
             <table class="table table-hover" style="background: whitesmoke; border: solid 2px #cfcfcf; ">
                 <thead>
                 <tr>
-                    <th>Année</th>
-                    <th>Catégorie</th>
-                    <th>Matricule</th>
-                    <th>Nom</th>
-                    <th>Prénom</th>
-                    <th>N°Coupon</th>
-                    <th>Date</th>
+
+                    <th> Catégorie</th>
+                    <th> Matricule</th>
+                    <th> Nom</th>
+                    <th> Prénom</th>
+                    <th> N°Coupon</th>
+                    <th> Date</th>
                 </tr>
                 </thead>
                 <tbody>
 
                 </tbody>
+
             </table>
         </div>
     </div>
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-         aria-hidden="true">
+    <!--Modale ajout table-->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria - labelledby="exampleModalLabel"
+         aria - hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ajout</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
+                    <h5 class="modal-title" id="exampleModalLabel"> Ajout</h5>
+                    <button type="button" class="close" data - dismiss="modal" aria - label="Close">
+                        <span aria - hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body" style="height:  40vh;">
@@ -185,11 +214,11 @@
 
                         <div class="form-row">
                             <div class="form-group col-md-6 col-sm-6 col-xs-6">
-                                <label for="nnom">Nom</label>
+                                <label for="nnom"> Nom</label>
                                 <input type="text" class="form-control" placeholder="Nom" name="nnom">
                             </div>
                             <div class="form-group col-md-6 col-sm-6 col-xs-6">
-                                <label for="nprenom">Prénom</label>
+                                <label for="nprenom"> Prénom</label>
                                 <input type="text" class="form-control" placeholder="Prénom"
                                        name="nprenom">
                             </div>
@@ -197,34 +226,31 @@
 
                         <div class="form-row">
                             <div class="form-group col-md-6 col-sm-6 col-xs-6">
-                                <label for="ncoupon">XXXXXX</label>
+                                <label for="ncoupon"> XXXXXX</label>
                                 <input type="text" class="form-control" placeholder="Coupon"
                                        name="ncoupon">
                             </div>
                             <div class="form-group col-md-6 col-sm-6 col-xs-6">
-                                <label for="nmatricule">Matricule</label>
+                                <label for="nmatricule"> Matricule</label>
                                 <input type="text" class="form-control" placeholder="Matricule"
                                        name="nmatricule">
                             </div>
                         </div>
 
                         <div class="form-row">
+
                             <div class="form-group col-md-6 col-sm-6 col-xs-6">
-                                <label for="nannee">Année</label>
-                                <input type="text" class="form-control" name="nannee">
-                            </div>
-                            <div class="form-group col-md-6 col-sm-6 col-xs-6">
-                                <label for="njour">Date</label>
-                                <input type="text" class="form-control" name="njour">
+                                <label for="njour"> Date</label>
+                                <input type="date" class="form-control" name="njour">
                             </div>
                         </div>
 
                         <div class="form-row">
                             <div class="form-group col-md-6 col-sm-6 col-xs-6">
-                                <label for="ncategorie">Catégorie</label>
+                                <label for="ncategorie"> Catégorie</label>
                                 <select class="form-control" name="ncategorie">
-                                    <option selected>AR</option>
-                                    <option>AC</option>
+                                    <option selected> AR</option>
+                                    <option> AC</option>
                                 </select>
                             </div>
                             <div class="form-group col-md-6 col-sm-6 col-xs-6">
@@ -233,7 +259,7 @@
                             </div>
                         </div>
 
-                        <button type="submit" class="btn btn-light">Ajouter</button>
+                        <button type="submit" class="btn btn-light"> Ajouter</button>
                     </form>
                 </div>
             </div>
@@ -242,10 +268,166 @@
 </div>
 
 
+</div >
+
+<?php }
+else{ ?>
+<div class="row">
+    <!--formulaire recherche-->
+    <h1>yolo</h1>
+
+    <form method="post" action="index5.php" id="formrecherche" class="col-lg-12">
+        <div class="col-lg-6">
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="matricule"> Matricule</label>
+                    <input type="text" class="form-control" id="matricule" name="matricule">
+                </div>
+
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="nom"> Nom</label>
+                    <input type="text" class="form-control" id="nom" name="nom">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="prenom"> Prénom</label>
+                    <input type="text" class="form-control" id="prenom" name="prenom">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="coupon"> Coupon</label>
+                    <input type="text" class="form-control" id="coupon" name="coupon" ">
+                </div>
+
+            </div>
+        </div>
+
+
+        <!-- groupe bouton -->
+
+        <div class="col - lg - 6" style=" text - align: center">
+            <button type="button" class=" btn btn - light" data-toggle="modal" data-target="#exampleModal"
+                    disabled
+                    style="width: 75px"> OK
+            </button>
+            <button type="submit" class="btn btn-light"
+                    style="width: 75px">
+                Exécuter
+            </button>
+            <button type="button" class="btn light" data-toggle="modal" data - target="#suppmodal  " disabled
+                    style="width: 75px;">
+                Trier...
+            </button>
+            <br>
+            <button type="button" class="btn light" data-toggle="modal" data - target="#suppmodal  ">
+                Annuler
+            </button>
+            <button type="button" class="btn light" data - toggle="modal" data - target="#exampleModal"
+                    style="width: 75px">
+                Nouveau
+            </button>
+            <button type="button" class="btn light" data - toggle="modal" data - target="#suppmodal  "
+                    style="width: 75px">
+                Aide
+            </button>
+
+        </div>
+    </form>
 </div>
 
 
-<?php } ?>
+<!--tableau -->
+<div class="row" style="margin-top: 20px">
+    <div class="col-lg-12 " style=" overflow: auto">
+        <table class="table table-hover" style="background: whitesmoke; border: solid 2px #cfcfcf; ">
+            <thead>
+            <tr>
+
+                <th> Catégorie</th>
+                <th> Matricule</th>
+                <th> Nom</th>
+                <th> Prénom</th>
+                <th> N°Coupon</th>
+                <th> Date</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+
+        </table>
+    </div>
+</div>
+<!--Modale ajout table-->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria - labelledby="exampleModalLabel"
+     aria - hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"> Ajout</h5>
+                <button type="button" class="close" data - dismiss="modal" aria - label="Close">
+                    <span aria - hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" style="height:  40vh;">
+                <form method="post" action="index5.php">
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6 col-sm-6 col-xs-6">
+                            <label for="nnom"> Nom</label>
+                            <input type="text" class="form-control" placeholder="Nom" name="nnom">
+                        </div>
+                        <div class="form-group col-md-6 col-sm-6 col-xs-6">
+                            <label for="nprenom"> Prénom</label>
+                            <input type="text" class="form-control" placeholder="Prénom"
+                                   name="nprenom">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6 col-sm-6 col-xs-6">
+                            <label for="ncoupon"> XXXXXX</label>
+                            <input type="text" class="form-control" placeholder="Coupon"
+                                   name="ncoupon">
+                        </div>
+                        <div class="form-group col-md-6 col-sm-6 col-xs-6">
+                            <label for="nmatricule"> Matricule</label>
+                            <input type="text" class="form-control" placeholder="Matricule"
+                                   name="nmatricule">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+
+                        <div class="form-group col-md-6 col-sm-6 col-xs-6">
+                            <label for="njour"> Date</label>
+                            <input type="date" class="form-control" name="njour">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6 col-sm-6 col-xs-6">
+                            <label for="ncategorie"> Catégorie</label>
+                            <select class="form-control" name="ncategorie">
+                                <option selected> AR</option>
+                                <option> AC</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6 col-sm-6 col-xs-6">
+
+
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-light"> Ajouter</button>
+                </form>
+            </div>
+        </div>
+        <?php
+        } ?>
+        <?php } ?>
 </body>
 
 </html>
