@@ -51,7 +51,7 @@
                 <div class="row">
                     <div class="jumbotron col-lg-2"
                          style="background-color: whitesmoke;background-repeat: no-repeat;font-size: 2em;text-align: center;background-size: cover; border: 2px solid #cfcfcf">
-                        <?php echo 'Bonjour ' . $_SESSION['pseudo'] . ' le magnifique' ?>
+                        <?php echo 'Bonjour ' . $_SESSION['pseudo'] ?>
                     </div>
                 </div>
                 <div class="row">
