@@ -16,7 +16,7 @@
     }
 </style>
 
-<div class="navbar navbar-light bg-light" style="background: #f5f5f5">
+<div class="navbar navbar-light bg-light" style="background: #f5f5f5; border-radius: ">
     <a class="navbar-brand" href="index.php">Relève et détachements</a>
     <?php 
 				/* si connecter afficher le menu complet et le bouton deconnecter */

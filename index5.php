@@ -38,6 +38,9 @@
             margin-right: 1px;
         }
 
+        input {
+            border-radius: 0px;
+        }
 
     </style>
 </head>

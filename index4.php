@@ -94,7 +94,6 @@
                 <?php
                 while ($donnees = $reponse->fetch()) {
                     ?>
-
                     <tr>
                         <td><?php echo $donnees['code']; ?></td>
                         <td><?php echo $donnees['libelle']; ?></td>
