@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
     <style type="text/css">
         .container {
             width: 75%;
@@ -46,6 +47,7 @@
 </head>
 
 <body style="background-color: #f0f0f0;">
+
 <div class="container" style="background-color: white;">
 
 
@@ -144,7 +146,7 @@
                         style="width: 75px;">
                     Trier...
                 </button>
-                <br> <a href="index5.php">
+                <br> <a href="index5.php" style="text-decoration: none">
                     <button type="button" class="btn light" data-toggle="modal" data-target="#suppmodal  ">
                         Annuler
                     </button>
@@ -204,6 +206,7 @@
                         </tr>
                     <?php }//}
                 }
+
                 ?>
                 </tbody>
             </table>
@@ -220,7 +223,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body" style="height:  40vh;">
+                <div class="modal-body" style="height:  auto;">
                     <form method="post" action="index5.php">
 
                         <div class="form-row">
@@ -279,10 +282,11 @@
 </div>
 
 
+<?php } ?>
+
+
 </div>
 
-
-<?php } ?>
 </body>
 
 </html>
