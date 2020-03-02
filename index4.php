@@ -82,18 +82,7 @@
         }
         ?>
         <?php
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    while ($donnees = $reponse->fetch()) {
-    if ($_POST['code'] === $donnees['code']){ ?>
-        <h3> Motif : <?php echo $donnees['code']; ?></h3>
-        <h4> <?php echo $donnees['libelle']; ?> </h4>
-        <h4> Direction : <?php echo $donnees['direction']; ?></h4>
-        <h4> Service : <?php echo $donnees['service']; ?></h4>
-
-
-    <?php }
-    }
-    } ?>
+  ?>
         <div style="overflow: auto;max-height: 60vh;">
             <table class="table table table-hover " style="background-color: whitesmoke;border: solid 2px #cfcfcf ">
                 <thead>
