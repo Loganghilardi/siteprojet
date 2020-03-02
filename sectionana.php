@@ -107,41 +107,20 @@ if (!isset($_SESSION['pseudo'])) {
             </div>
 
 
+        </div>
+        <script>
+            window.printDiv = function (divName) {
+
+                const printContents = document.getElementById(divName).innerHTML;
+                const originalContents = document.body.innerHTML;
 
 
+                document.body.innerHTML = printContents;
 
 
+                window.print();
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    </div>
-<script>
-    window.printDiv = function(divName) {
-
-     var printContents = document.getElementById(divName).innerHTML;
-      var originalContents = document.body.innerHTML;
-
-
-      document.body.innerHTML = printContents;
-
-
-
-
-      window.print();
-
-      document.body.innerHTML = originalContents;
+                document.body.innerHTML = originalContents;
  }
  </script>
 

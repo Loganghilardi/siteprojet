@@ -26,6 +26,9 @@
             margin-right: 2px;
         }
 
+        #tr:hover {
+            background: lightgrey;
+        }
     </style>
 </head>
 
@@ -74,12 +77,23 @@
                     'libelle' => $libelle,
                     'direction' => $direction,
                     'service' => $service));
-
-
             }
             header('refresh: 0');
         }
         ?>
+        <?php
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    while ($donnees = $reponse->fetch()) {
+    if ($_POST['code'] === $donnees['code']){ ?>
+        <h3> Motif : <?php echo $donnees['code']; ?></h3>
+        <h4> <?php echo $donnees['libelle']; ?> </h4>
+        <h4> Direction : <?php echo $donnees['direction']; ?></h4>
+        <h4> Service : <?php echo $donnees['service']; ?></h4>
+
+
+    <?php }
+    }
+    } ?>
         <div style="overflow: auto;max-height: 60vh;">
             <table class="table table table-hover " style="background-color: whitesmoke;border: solid 2px #cfcfcf ">
                 <thead>
@@ -92,23 +106,29 @@
                 </thead>
                 <tbody>
                 <?php
+
                 while ($donnees = $reponse->fetch()) {
+
                     ?>
-                    <tr>
-                        <td><?php echo $donnees['code']; ?></td>
+                    <tr id="tr">
+                        <td onclick="yolo(this);"><?php echo $donnees['code'];
+
+                            ?></td>
+
                         <td><?php echo $donnees['libelle']; ?></td>
                         <td><?php echo $donnees['direction']; ?></td>
                         <td><?php echo $donnees['service']; ?></td>
                     </tr>
 
+                    <?php
 
-                <?php } ?>
+
+                }
+
+                ?>
                 </tbody>
-
             </table>
         </div>
-
-
         <div class="col-lg-3 col-md-4 col-sm-5 col-xs-12" style="margin: 1vh;">
             <div class="btn-group" role="group" aria-label="exemple">
                 <button type="button" class="btn btn-light" data-toggle="modal" data-target="#exampleModal">Ajouter
@@ -116,13 +136,19 @@
                 <button type="button" class="btn btn-light" data-toggle="modal" data-target="#suppmodal  ">
                     Supprimer
                 </button>
-
             </div>
         </div>
+        <script>
+            function yolo(form_element) {
 
+
+                var form_element_id = form_element.innerHTML;
+                alert("Le motif ayant le code  `" + form_element_id + "` à été cliqué !");
+
+
+            }
+        </script>
     <?php } ?>
-
-
     <div class="modal fade " id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
          aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -132,24 +158,17 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                                 aria-hidden="true">&times;</span></button>
                 </div>
-
                 <div class="modal-body">
                     <form method="post" action="index4.php">
-
                         <label>Code
                             <input type="text" name="code" class="form-control">
                         </label>
-
                         <label>Libellé
                             <input type="text" name="libelle" class="form-control">
                         </label>
-
-
                         <label>Direction
                             <input type="text" name="direction" class="form-control">
                         </label>
-
-
                         <label>Secteur
                             <input type="text" name="service" class="form-control">
                         </label>
@@ -181,8 +200,6 @@
             </div>
         </div>
     </div>
-
-
 </div>
 
 </body>
