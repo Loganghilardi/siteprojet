@@ -25,6 +25,10 @@
             margin-right: 2px;
         }
 
+        #tr:hover {
+            background: lightgrey;
+        }
+
     </style>
 </head>
 
@@ -82,7 +86,7 @@
         // On affiche chaque entrée une à une
         while ($donnees = $reponse->fetch()) {
             ?>
-            <tr>
+            <tr id="tr">
                 <td><?php echo $donnees['Code']; ?></td>
                 <td> <?php echo $donnees['Libellé']; ?></td>
             </tr>

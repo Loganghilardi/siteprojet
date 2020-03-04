@@ -22,6 +22,10 @@
             margin-top: 7px;
             margin-right: 2px;
         }
+
+        #tr:hover {
+            background: lightgrey;
+        }
     </style>
 </head>
 <body style="background-color: #f0f0f0;">
@@ -90,7 +94,7 @@
                 while ($donnees = $reponse->fetch()) {
                     $oui = "Oui";
                     ?>
-                    <tr>
+                    <tr id="tr">
                         <td><?php echo $donnees['Annee']; ?></td>
                         <td> <?php
                             if ($donnees['Fermée'] == $oui) {

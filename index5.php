@@ -43,6 +43,10 @@
             border-radius: 0px;
         }
 
+        #tr:hover {
+            background: lightgrey;
+        }
+
     </style>
 </head>
 
@@ -196,7 +200,7 @@
                     // if ($rmatricule == $nsm['matricule'] || $rnom == $nsm['nom'] || $rprenom == $nsm['prenom'] || $rcoupon == $nsm['coupon'] ) {
 
                     while ($nsm = $reponse->fetch()) { ?>
-                        <tr>
+                        <tr id="tr">
                             <td><?php echo $nsm['categorie']; ?></td>
                             <td><?php echo $nsm['matricule']; ?></td>
                             <td><?php echo $nsm['nom']; ?></td>

@@ -50,7 +50,10 @@
         }
 
 
-        $reponse = $bdd->query('SELECT * FROM motif ORDER BY code ASC'); ?>
+        $reponse = $bdd->query('SELECT * FROM motif ORDER BY code ASC');
+
+
+        ?>
 
 
         <?php
@@ -82,7 +85,7 @@
         }
         ?>
         <?php
-  ?>
+        ?>
         <div style="overflow: auto;max-height: 60vh;">
             <table class="table table table-hover " style="background-color: whitesmoke;border: solid 2px #cfcfcf ">
                 <thead>
@@ -96,11 +99,17 @@
                 <tbody>
                 <?php
 
+
                 while ($donnees = $reponse->fetch()) {
 
+
                     ?>
+
                     <tr id="tr">
-                        <td onclick="yolo(this);"><?php echo $donnees['code'];
+                        <td onclick="yolo(this);">
+                            <?php $variableAPasser = 'AC';
+                            echo $donnees['code'];
+
 
                             ?></td>
 
@@ -127,17 +136,32 @@
                 </button>
             </div>
         </div>
+
+
         <script>
+
+
             function yolo(form_element) {
 
-
                 var form_element_id = form_element.innerHTML;
-                alert("Le motif ayant le code  `" + form_element_id + "` à été cliqué !");
+                console.log(form_element_id);
+                console.log(<?php echo json_encode($variableAPasser) ?>);
 
+
+                if (form_element_id === <?php echo json_encode($variableAPasser) ?>) {
+
+                    alert("Le motif ayant le code  `" + form_element_id + "` à été cliqué !");
+
+                } else {
+                    console.log("lol")
+                }
 
             }
+
         </script>
+
     <?php } ?>
+
     <div class="modal fade " id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
          aria-hidden="true">
         <div class="modal-dialog" role="document">
