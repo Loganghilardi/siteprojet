@@ -98,32 +98,25 @@
                 </thead>
                 <tbody>
                 <?php
+                $req = $bdd->query('SELECT code FROM motif ');
+                $result = $req->fetch();
 
 
                 while ($donnees = $reponse->fetch()) {
 
 
                     ?>
-
                     <tr id="tr">
-                        <td onclick="yolo(this);">
-                            <?php $variableAPasser = 'AC';
-                            echo $donnees['code'];
-
-
+                        <td onclick="yolo(this);"><?php echo $donnees['code'];
+                            $variableAPasser = $donnees['code'];
                             ?></td>
-
                         <td><?php echo $donnees['libelle']; ?></td>
                         <td><?php echo $donnees['direction']; ?></td>
-                        <td><?php echo $donnees['service']; ?></td>
+                        <td><?php echo $donnees['service'];
+                            echo $variableAPasser; ?></td>
                     </tr>
 
-                    <?php
-
-
-                }
-
-                ?>
+                <?php } ?>
                 </tbody>
             </table>
         </div>
@@ -153,7 +146,7 @@
                     alert("Le motif ayant le code  `" + form_element_id + "` à été cliqué !");
 
                 } else {
-                    console.log("lol")
+                    console.log("lol");
                 }
 
             }
