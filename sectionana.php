@@ -66,34 +66,29 @@ if (!isset($_SESSION['pseudo'])) {
           ?>
 
 
-
-
-
-
-
-
-
-        <form action="sectionana.php" method="post" class="col-lg-2">
-            <div class="form-group">
-            <label  for="code">Motif</label>
-                <select  class="form-control" name="code" >
-                  <option selected>60 ANNIVER</option>
-                  <option>ASSOC CENT</option>
-                  <option>COMM052</option>
-                  <option>CROSS</option>
-                  <option>DST</option>
-                </select>
-             </div>
-            <button class="btn btn-light" type="submit" > Changer de Motif  </button>
+    <form action="sectionana.php" method="post" class="col-lg-2">
+        <div class="form-group">
+            <label for="code">Motif</label>
+            <select class="form-control" name="code">
+                <option selected>60 ANNIVER</option>
+                <option>ASSOC CENT</option>
+                <option>COMM052</option>
+                <option>CROSS</option>
+                <option>DST</option>
+            </select>
+            <button class="btn btn-light" type="submit"> Valider</button>
             <button class="btn btn-light" onclick="printDiv('printableArea')" value="print a div!">Imprimer
             </button>
-        </form>
         </div>
+
+
+    </form>
+    </div>
     <div class="row">
         <div id="printableArea">
             <div class="container" style="text-align: center">
 
-            <?php
+                <?php
              if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     while ($donnees = $reponse->fetch()) {
                       if ($_POST['code'] === $donnees['code'] ){ ?>

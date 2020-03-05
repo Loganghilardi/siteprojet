@@ -98,8 +98,6 @@
                 </thead>
                 <tbody>
                 <?php
-                $req = $bdd->query('SELECT code FROM motif ');
-                $result = $req->fetch();
 
 
                 while ($donnees = $reponse->fetch()) {
@@ -108,18 +106,19 @@
                     ?>
                     <tr id="tr">
                         <td onclick="yolo(this);"><?php echo $donnees['code'];
-                            $variableAPasser = $donnees['code'];
+
                             ?></td>
                         <td><?php echo $donnees['libelle']; ?></td>
                         <td><?php echo $donnees['direction']; ?></td>
                         <td><?php echo $donnees['service'];
-                            echo $variableAPasser; ?></td>
+                            ?></td>
                     </tr>
 
                 <?php } ?>
                 </tbody>
             </table>
         </div>
+
         <div class="col-lg-3 col-md-4 col-sm-5 col-xs-12" style="margin: 1vh;">
             <div class="btn-group" role="group" aria-label="exemple">
                 <button type="button" class="btn btn-light" data-toggle="modal" data-target="#exampleModal">Ajouter
@@ -129,7 +128,9 @@
                 </button>
             </div>
         </div>
+        <div id="ta" style="overflow: auto;max-height: 60vh;">
 
+        </div>
 
         <script>
 
@@ -137,14 +138,48 @@
             function yolo(form_element) {
 
                 var form_element_id = form_element.innerHTML;
-                console.log(form_element_id);
-                console.log(<?php echo json_encode($variableAPasser) ?>);
+                var code = form_element_id;
 
 
-                if (form_element_id === <?php echo json_encode($variableAPasser) ?>) {
+                if (form_element_id === code) {
+
+                    var body = document.getElementById("ta");
+                    body.innerHTML = '';
+
+                    // creates a <table> element and a <tbody> element
+                    var tbl = document.createElement("table");
+                    var tblBody = document.createElement("tbody");
+
+                    // creating all cells
+                    for (var i = 0; i < 2; i++) {
+                        // creates a table row
+                        var row = document.createElement("tr");
+
+                        for (var j = 0; j < 2; j++) {
+                            // Create a <td> element and a text node, make the text
+                            // node the contents of the <td>, and put the <td> at
+                            // the end of the table row
+                            var cell = document.createElement("td");
+                            var cellText = document.createTextNode("cell in row " + i + ", column " + j);
+                            cell.appendChild(cellText);
+                            row.appendChild(cell);
+                        }
+
+                        // add the row to the end of the table body
+                        tblBody.appendChild(row);
+                    }
+
+                    // put the <tbody> in the <table>
+                    tbl.appendChild(tblBody);
+                    // appends <table> into <body>
+                    body.appendChild(tbl);
+                    // sets the border attribute of tbl to 2;
+                    tbl.setAttribute("border", "2");
+
+
+                    form_element.innerHTML = '7';
 
                     alert("Le motif ayant le code  `" + form_element_id + "` à été cliqué !");
-
                 } else {
                     console.log("lol");
                 }
