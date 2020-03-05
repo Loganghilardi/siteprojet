@@ -128,7 +128,7 @@
                 </button>
             </div>
         </div>
-        <div id="ta" style="overflow: auto;max-height: 60vh;">
+        <div class="col-lg-12" id="ta" style="overflow: auto;max-height: 60vh;">
 
         </div>
 
@@ -136,6 +136,7 @@
 
 
             function yolo(form_element) {
+
 
                 var form_element_id = form_element.innerHTML;
                 var code = form_element_id;
@@ -148,19 +149,25 @@
 
                     // creates a <table> element and a <tbody> element
                     var tbl = document.createElement("table");
+                    tbl.classList.add("table");
+                    tbl.classList.add("table");
+                    tbl.classList.add("table-hover");
+                    tbl.style.backgroundColor = 'whitesmoke';
+                    tbl.style.border = "solid 2px #cfcfcf"
                     var tblBody = document.createElement("tbody");
 
                     // creating all cells
-                    for (var i = 0; i < 2; i++) {
+                    for (var i = 1; i < 4; i++) {
                         // creates a table row
                         var row = document.createElement("tr");
 
-                        for (var j = 0; j < 2; j++) {
+
+                        for (var j = 1; j < 4; j++) {
                             // Create a <td> element and a text node, make the text
                             // node the contents of the <td>, and put the <td> at
                             // the end of the table row
                             var cell = document.createElement("td");
-                            var cellText = document.createTextNode("cell in row " + i + ", column " + j);
+                            var cellText = document.createTextNode("cellule de la ligne " + i + ", colonne " + j + form_element_id);
                             cell.appendChild(cellText);
                             row.appendChild(cell);
                         }
@@ -174,7 +181,6 @@
                     // appends <table> into <body>
                     body.appendChild(tbl);
                     // sets the border attribute of tbl to 2;
-                    tbl.setAttribute("border", "2");
 
 
                     form_element.innerHTML = '7';
@@ -184,8 +190,8 @@
                     console.log("lol");
                 }
 
-            }
 
+            }
         </script>
 
     <?php } ?>
